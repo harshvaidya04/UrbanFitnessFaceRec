@@ -1,12 +1,12 @@
 import streamlit as st
-from Home import face_rec
+import face_rec
 import cv2
 import numpy as np
 from streamlit_webrtc import webrtc_streamer
 import av
 
 
-st.subheader('Registration Form')
+st.subheader('Gym Member Registration Form')
 
 ## init registration form
 registration_form = face_rec.RegistrationForm()
@@ -25,20 +25,16 @@ def video_callback_func(frame):
 
 
 ####### Registration Form ##########
-with st.container(border=True):
-    name = st.text_input(label='Name',placeholder='Enter First name and Last name')
+with st.container():
+    name = st.text_input(label='Name', placeholder='Enter Full Name')
     role = st.selectbox(label='Role', placeholder='Select Role', options=('--select--',
-                                                                          'Student', 'Teacher'))
-    course = st.selectbox(label='Select Course', placeholder='Select Course',
-                          options=('--select--','Computer Science',
-                                   'Electrical','Electronics'))
-    year_level = st.selectbox(label='Year Level', placeholder='Year Level',
-                              options=('--select--', 'I - First Year',
-                                       'II - Second Year',
-                                       'III - Third Year','IV - Fourth Year'))
-    address = st.text_area(label='Address', placeholder='Enter your address')
-    contact = st.text_input(label='Contact Number', placeholder='Enter your contact number')
-    email = st.text_input(label='Email', placeholder='Enter Email Address')
+                                                                          'Trainer', 'Member'))
+    gym_timing = st.selectbox(label='Gym Timing', placeholder='Select Gym Timing',
+                               options=('--select--', 'Morning', 'Afternoon', 'Evening'))
+    # enrolled_date = st.date_input(label='Enrolled Date', help='Select the date of enrollment')
+    # address = st.text_area(label='Address', placeholder='Enter your address')
+    # contact = st.text_input(label='Contact Number', placeholder='Enter your contact number')
+    # email = st.text_input(label='Email', placeholder='Enter Email Address')
 
     st.write('Click on Start button to collect your face samples')
     with st.expander('Instructions'):
@@ -67,7 +63,3 @@ if st.button('Submit'):
 
     elif return_val == 'file_false':
         st.error('face_embedding.txt is not found. Please refresh the page and execute again.')
-
-# else:
-#     authenticator.login('Login', 'main')
-        
