@@ -14,7 +14,7 @@ from datetime import datetime
 import os
 
 r = redis.Redis(
-    host='13.204.77.77',
+    host='localhost',
     port=6379,
     socket_timeout=5,
     decode_responses=False,
@@ -36,7 +36,7 @@ def retrive_data(name):
 
 # configure face analysis
 faceapp = FaceAnalysis(name='buffalo_sc',root='insightface_model', providers = ['CPUExecutionProvider'])
-faceapp.prepare(ctx_id = 0, det_size=(640,640), det_thresh = 0.5)
+faceapp.prepare(ctx_id = 0, det_size=(320,320), det_thresh = 0.5)
 
 # ML Search Algorithm
 def ml_search_algorithm(dataframe,feature_column,test_vector,
