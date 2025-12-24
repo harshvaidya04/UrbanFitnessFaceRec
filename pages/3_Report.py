@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-from Home import face_rec
+import face_rec
 import datetime
 
 

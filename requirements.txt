@@ -7,3 +7,5 @@ streamlit
 streamlit-webrtc
 insightface
 onnxruntime
+av
+redis
